@@ -8,7 +8,7 @@ const Loading = () => {
         <div className="ball">
           <div className="inner">
             <div className="line" />
-            <div className="line line--two" />
+            <div className="line line--two" />  
             <div className="oval" />
             <div className="oval oval--two" />
           </div>
