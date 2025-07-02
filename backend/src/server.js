@@ -33,10 +33,6 @@ app.use(
 app.use(rateLimiter);
 
 // Middleware to log request method and URL
-// app.use((req, res, next) => {
-//   console.log(` Req methos is ${req.method} & Request for url '${req.url}'`);
-//   next();
-// });
 
 app.use("/api/notes", notesRoutes);
 

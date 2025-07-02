@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Edit, Eye, Trash2 } from "lucide-react";
-import { formatDate } from "../lib/utils";
+// import { formatDate } from "../lib/utils";
 import api from "../lib/axios";
 import toast from "react-hot-toast";
 
@@ -37,7 +37,8 @@ const NoteCard = ({ note, setNotes }) => {
         {/* Bottom section with date and actions */}
         <div className="flex items-center justify-between">
           <span className="text-gray-400 text-xs font-mono">
-            {formatDate(new Date(note.updatedAt))}
+            {/* {formatDate(new Date(note.createdAt))} */}
+            =========||=========
           </span>
           <div className="flex gap-2 opacity-70 group-hover:opacity-100 transition-opacity duration-200">
             <Link
