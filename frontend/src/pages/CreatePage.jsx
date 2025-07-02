@@ -75,7 +75,7 @@ const CreatePage = () => {
           <div className="text-right">
             <button
               type="submit"
-              className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-full transition-all duration-200"
+              className="cursor-pointer bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-full transition-all duration-200"
             >
               {loading ? "Creating..." : "Create Note"}
             </button>
