@@ -6,6 +6,7 @@ import Loading from "../components/Loading";
 import NoteCard from "../components/NoteCard";
 import api from "../lib/axios";
 import NoteNotFound from "../components/NoteNotFound";
+import Footer from "../components/Footer";
 
 const ThinkBoard = () => {
   const [isRateLimited, setIsRateLimited] = useState(false);
@@ -53,7 +54,7 @@ const ThinkBoard = () => {
         ) : (
           <div className="max-w-7xl mx-auto p-2 w-full">
             {notes.length > 0 && !isRateLimited && (
-              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-smooth">
                 {notes.map((note) => (
                   <NoteCard key={note._id} note={note} setNotes={setNotes} />
                 ))}
@@ -63,6 +64,8 @@ const ThinkBoard = () => {
         )}
       </div>
       {notes.length === 0 && !isRateLimited && <NoteNotFound />}
+
+      <Footer />
     </div>
   );
 };

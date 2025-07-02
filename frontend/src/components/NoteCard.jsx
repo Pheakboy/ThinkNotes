@@ -19,20 +19,20 @@ const NoteCard = ({ note, setNotes }) => {
   };
 
   return (
-    <div className="block group">
+    <Link to={`/note/${note._id}`} className="block group scroll-smooth">
       <div className="relative bg-gradient-to-br from-gray-900 h-48 via-gray-800 to-gray-900 border-2 border-green-400 rounded-2xl p-6 shadow-xl hover:shadow-green-400/30 transition-all duration-300 cursor-pointer overflow-hidden">
         {/* Decorative Glow */}
         <div className="absolute -top-8 -right-8 w-32 h-32 bg-green-400 opacity-20 rounded-full blur-2xl pointer-events-none group-hover:opacity-40 transition-opacity duration-300"></div>
 
         {/* Main content - clickable area for viewing */}
-        <Link to={`/note/${note._id}`} className="block mb-6">
+        <div className="block mb-6">
           <h3 className="text-white text-2xl font-bold mb-2 tracking-tight group-hover:text-green-400 transition-colors duration-300 line-clamp-1">
             {note.title}
           </h3>
           <p className="text-gray-300 text-base leading-relaxed line-clamp-2">
             {note.content}
           </p>
-        </Link>
+        </div>
 
         {/* Bottom section with date and actions */}
         <div className="flex items-center justify-between">
@@ -68,7 +68,7 @@ const NoteCard = ({ note, setNotes }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
