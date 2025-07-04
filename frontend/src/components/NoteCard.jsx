@@ -1,10 +1,12 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { Edit, Eye, Trash2 } from "lucide-react";
-// import { formatDate } from "../lib/utils";
+import { formatDate } from "../lib/utils";
 import api from "../lib/axios";
 import toast from "react-hot-toast";
 
 const NoteCard = ({ note, setNotes }) => {
+  const navigate = useNavigate();
+
   const handleDelete = async (e, id) => {
     e.preventDefault();
     if (!window.confirm("Are you sure you want to delete this note?")) return;
@@ -19,7 +21,10 @@ const NoteCard = ({ note, setNotes }) => {
   };
 
   return (
-    <Link to={`/note/${note._id}`} className="block group scroll-smooth">
+    <div
+      onClick={() => navigate(`/note/${note._id}`)}
+      className="block group scroll-smooth"
+    >
       <div className="relative bg-gradient-to-br from-gray-900 h-48 via-gray-800 to-gray-900 border-2 border-green-400 rounded-2xl p-6 shadow-xl hover:shadow-green-400/30 transition-all duration-300 cursor-pointer overflow-hidden">
         {/* Decorative Glow */}
         <div className="absolute -top-8 -right-8 w-32 h-32 bg-green-400 opacity-20 rounded-full blur-2xl pointer-events-none group-hover:opacity-40 transition-opacity duration-300"></div>
@@ -37,7 +42,9 @@ const NoteCard = ({ note, setNotes }) => {
         {/* Bottom section with date and actions */}
         <div className="flex items-center justify-between">
           <span className="text-gray-400 text-xs font-mono">
-            {/* {formatDate(new Date(note.createdAt))} */}
+            {formatDate(new Date(note.createdAt))}
+          </span>
+          <span className="text-gray-400 text-xs font-mono">
             =========||=========
           </span>
           <div className="flex gap-2 opacity-70 group-hover:opacity-100 transition-opacity duration-200">
@@ -68,7 +75,7 @@ const NoteCard = ({ note, setNotes }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import Note from "../models/Note.js";
+import mongoose from "mongoose";
 
 // get all notes
 export async function getAllNotes(_, res) {
@@ -14,10 +15,22 @@ export async function getAllNotes(_, res) {
 // get note by id
 export async function getNoteById(req, res) {
   try {
-    const note = await Note.findById(req.params.id);
+    const { id } = req.params;
+
+    // Check if the ID is a valid MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      console.log("Invalid ObjectId format:", id);
+      return res.status(400).json({ message: "Invalid note ID format" });
+    }
+
+    const note = await Note.findById(id);
+
     if (!note) {
+      console.log("Note not found with ID:", id);
       return res.status(404).json({ message: "Note not found" });
     }
+
+    console.log("Note found successfully:", note.title);
     res.status(200).json(note);
   } catch (error) {
     console.error("Error fetching note by ID:", error);

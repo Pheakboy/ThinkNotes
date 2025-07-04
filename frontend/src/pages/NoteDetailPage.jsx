@@ -28,7 +28,7 @@ const NoteDetailPage = () => {
         setNote(res.data);
       } catch (error) {
         console.error("Error fetching note:", error);
-        toast.error("Failed to fetch note. Please try again later.");
+        // toast.error("Failed to fetch note. Please try again later.");
         navigate("/");
       } finally {
         setLoading(false);

@@ -23,8 +23,10 @@ app.use(
         ? process.env.FRONTEND_URL || true // Allow configured domain or any origin in production
         : [
             "http://localhost:5173",
+            "http://localhost:5174", // Added for your current frontend port
             "http://localhost:3000",
             "http://127.0.0.1:5173",
+            "http://127.0.0.1:5174",
           ], // Multiple dev origins
     credentials: true,
   })
